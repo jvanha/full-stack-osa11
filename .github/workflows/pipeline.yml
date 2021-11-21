@@ -17,6 +17,16 @@ jobs:
         run: npm install && cd phonebook && npm install && cd..
       - name: lint
         run: npm run lint
+  deployment_pipeline_continues:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: npm install
+        run: npm install && cd phonebook && npm install && cd..    
+
       - name: build
         run: npm run build:ui
       - name: deploy
